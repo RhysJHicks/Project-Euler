@@ -3,4 +3,8 @@
 # Answer: 
 # Approach 1:
 
-print(x)
+def approach_1():
+    x = 0
+    return x
+
+print(approach_1())
