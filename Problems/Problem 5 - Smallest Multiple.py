@@ -4,9 +4,10 @@
 
 
 def approach_1():
-    nums = range(11, 20)
-    for i in nums:
-        print(i)
+    nums = range(1, 11)
+    while True:
+        for i in nums:
+            if i % 2 != 0:
+                continue
 
-    print(nums)
 approach_1()
