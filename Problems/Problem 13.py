@@ -3,12 +3,10 @@
     Answer:
     Approach 1:
 """
+from time import perf_counter
 
 
-def approach_1():
-    """this is func 1"""
-    # Paste the 100 numbers inside a multi-line string
-    numbers_str = """
+numbers_str = """
 37107287533902102798797998220837590246510135740250
 46376937677490009712648124896970078050417018260538
 74324986199524741059474233309513058123726617309629
@@ -111,10 +109,28 @@ def approach_1():
 53503534226472524250874054075591789781264330331690
 """
 
+
+def approach_1(numbers_str):
+    """this is func 1"""
     # Convert each line to an integer, sum them up, and take the first 10 characters
     numbers = [int(line) for line in numbers_str.strip().splitlines()]
     total_sum = sum(numbers)
     print(str(total_sum)[:10])
 
 
-print(approach_1())
+def approach_2(numbers_str):
+    """Only take the first 13 digits per line"""
+    # Take only the first 13 digits of each line to protect against carry-over drift
+    truncated_sum = sum(int(line[:13]) for line in numbers_str.strip().splitlines())
+    print(str(truncated_sum)[:10])
+
+
+start = perf_counter()
+approach_1(numbers_str)
+end = perf_counter()
+print(end - start)
+
+start = perf_counter()
+approach_2(numbers_str)
+end = perf_counter()
+print(end - start)
